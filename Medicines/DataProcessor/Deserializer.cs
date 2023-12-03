@@ -117,13 +117,21 @@
                         continue;
                     }
 
-                    if (medicineDto.Category != "0" &&
-                        medicineDto.Category != "1" && medicineDto.Category != "2" &&
-                        medicineDto.Category != "3" && medicineDto.Category != "4")
+                    int medicineCategory = int.Parse(medicineDto.Category);
+
+                    if (!Enum.IsDefined(typeof(Category), medicineCategory))
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
                     }
+
+                    //if (medicineDto.Category != "0" &&
+                    //    medicineDto.Category != "1" && medicineDto.Category != "2" &&
+                    //    medicineDto.Category != "3" && medicineDto.Category != "4")
+                    //{
+                    //    sb.AppendLine(ErrorMessage);
+                    //    continue;
+                    //}
 
                     Medicine medicine = new Medicine()
                     {
